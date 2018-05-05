@@ -1,0 +1,3 @@
+function onClickFoo() {
+    alert("FOO!!!");
+}
