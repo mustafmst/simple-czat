@@ -1,0 +1,15 @@
+{
+  "name": "czat-app",
+  "version": "1.0.0",
+  "description": "czat-app is a chat application written in javascript",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paweł Mstowski",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
