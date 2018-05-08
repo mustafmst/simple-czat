@@ -10,7 +10,11 @@ $(
         var msgInput = $("#new-msg");
         var username = $("#name").text();
         var room = $("#room").text();
-        
+        socket.emit('register', {
+            username,
+            room
+        });
+
         $('#msg-form').submit(function () {
             if (msgInput.val().trim() === '') return false;
             socket.emit("msg", {

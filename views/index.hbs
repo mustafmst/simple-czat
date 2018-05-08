@@ -1,5 +1,17 @@
-<form action="/room" method="get">
-    Name: <input type="text" name="name"><br>
-    Room: <input type="text" name="room"><br>
-    <input type="submit" value="Log in">
-</form>
+<div class="container-fluid row">
+    <div class="col"></div>
+    <div class="col-3">
+        <form action="/room" method="get">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="room" class="form-control" placeholder="Room">
+            </div>
+            <div class="row">
+                <input class="btn btn-dark col" type="submit" value="Log in">
+            </div>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>

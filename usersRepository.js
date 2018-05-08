@@ -11,9 +11,17 @@ function addUser(user, room) {
         }
     }
     rooms[room].push(user);
+    console.log(rooms);
     return true;
 }
 
+function deleteUser(user,room) {
+    if(rooms[room] === undefined) return;
+    rooms[room] = rooms[room].filter(u => u !== user);
+    console.log(rooms);
+}
+
 module.exports = {
-    addUser
+    addUser,
+    deleteUser
 };

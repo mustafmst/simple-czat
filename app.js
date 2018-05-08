@@ -50,6 +50,11 @@ app.get("/room", (req, res) => {
 io.on('connection', function(socket) {
     console.log("User connected");
 
+    socket.on('register', function(data){
+        socket.user = data.username;
+        socket.room = data.room;
+    })
+
     socket.on('msg', function(msg){
         io.emit(`msg-${msg.room}`, {
             user: msg.username,
@@ -58,7 +63,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function(){
-        console.log("User disconnected");
+        userRepo.deleteUser(socket.user, socket.room);
     })
 })
 
