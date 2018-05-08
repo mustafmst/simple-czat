@@ -51,8 +51,11 @@ io.on('connection', function(socket) {
     console.log("User connected");
 
     socket.on('msg', function(msg){
-        console.log(msg);
-    })
+        io.emit(`msg-${msg.room}`, {
+            user: msg.username,
+            msg: msg.msg
+        });
+    });
 
     socket.on('disconnect', function(){
         console.log("User disconnected");
