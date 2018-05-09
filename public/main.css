@@ -1,4 +1,17 @@
 .mine-msg .card{
-    background-color: blueviolet;
+    background-color: rgba(160, 217, 255, 0.603);
     margin-right: 0px;
+    text-align: end;
+}
+
+.input {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#list {
+    overflow-x: auto;
+    max-height: 75vh;
 }
