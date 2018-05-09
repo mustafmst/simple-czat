@@ -69,7 +69,7 @@ io.on('connection', function (socket) {
     })
 })
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3006;
 
 http.listen(port, () => {
     console.log('App is running on port ' + port);

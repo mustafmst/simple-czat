@@ -1,5 +1,5 @@
 function printMessage(user, msg, mine) {
-    var list = $("#list");
+    var list = $("#inner");
     var className = mine ? "mine-msg" : "other-msg";
     list.append(`<div class="${className} row"><div class="card col"><div class="card-body"><div class="card-title"><b>${user}</b></div>${msg}</div></div></div>`);
 }
@@ -28,7 +28,7 @@ $(
 
         socket.on(`msg-${room}`, function(msg){
             printMessage(msg.user, msg.msg, msg.user === username);
-            $("#list").animate({scrollTop: $("#list").height()});
+            $("#list").scrollTop($("#inner").height());
         })
     }
 );
