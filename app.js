@@ -8,8 +8,8 @@ const userRepo = require('./usersRepository');
 app.engine('hbs', hbs({
     extname: 'hbs',
     defaultLayout: 'main',
-    layoutsDir: __dirname+'/views/layouts',
-    partialsDir: __dirname+'/views/partials'
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials'
 }));
 
 app.set('view engine', 'hbs');
@@ -28,41 +28,43 @@ app.get("/room", (req, res) => {
         occured: false,
         msg: ""
     };
-    if(loginData.name === null || loginData.name === undefined || loginData.name.trim() === ""){
+    if (loginData.name === null || loginData.name === undefined || loginData.name.trim() === "") {
         error.occured = true;
         error.msg += "Invalid name provided! ";
     }
-    if(loginData.room === null || loginData.room === undefined || loginData.room.trim() === ""){
+    if (loginData.room === null || loginData.room === undefined || loginData.room.trim() === "") {
         error.occured = true;
         error.msg += "Invalid room provided! ";
     }
-    if(error.occured){
+    if (error.occured) {
         res.send(error.msg);
     }
-    if(userRepo.addUser(loginData.name, loginData.room)){
-        res.render('chat',{userData:loginData});
-    }
     else {
-        res.send("Such user is already loged in.");
+        if (userRepo.addUser(loginData.name, loginData.room)) {
+            res.render('chat', { userData: loginData });
+        }
+        else {
+            res.send("Such user is already loged in.");
+        }
     }
 });
 
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
     console.log("User connected");
 
-    socket.on('register', function(data){
+    socket.on('register', function (data) {
         socket.user = data.username;
         socket.room = data.room;
     })
 
-    socket.on('msg', function(msg){
+    socket.on('msg', function (msg) {
         io.emit(`msg-${msg.room}`, {
             user: msg.username,
             msg: msg.msg
         });
     });
 
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function () {
         userRepo.deleteUser(socket.user, socket.room);
     })
 })

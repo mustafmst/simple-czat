@@ -1,7 +1,7 @@
 function printMessage(user, msg, mine) {
     var list = $("#list");
     var className = mine ? "mine-msg" : "other-msg";
-    list.append(`<li class="${className}">${user} : ${msg}</li>`);
+    list.append(`<div class="${className} row"><div class="card"><div class="card-body"><p class="card-title">${user}</p>${msg}</div></div></div>`);
 }
 
 $(

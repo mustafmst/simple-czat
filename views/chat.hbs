@@ -1,13 +1,20 @@
 <div class="chat">
-    <div id="user-data">
-        Name: <div id="name">{{userData.name}}</div>
-        Room: <div id="room">{{userData.room}}</div>
+    <div id="user-data" class="container">
+        <div class="row">
+            <div class="col-1">Name: </div>
+            <div class="col" id="name">{{userData.name}}</div> ||
+            <div class="col-1">Room: </div>
+            <div class="col" id="room">{{userData.room}}</div>
+        </div>
     </div>
-    <ul class="messages" id="list">
-    </ul>
-    <div class="input">
+    <div class="messages container" id="list">
+    </div>
+    <div class="input container">
         <form action="" id="msg-form">
-            <input id="new-msg"><button>Send</button>
+            <div class="form-group row">
+                <input id="new-msg" type="text" class="form-control col">
+                <button class="btn btn-dark col-1">Send</button>
+            </div>
         </form>
     </div>
 </div>
