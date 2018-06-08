@@ -12,6 +12,16 @@
 }
 
 #list {
+    height: 75vh;
+}
+
+#inner {
     overflow-x: auto;
     max-height: 75vh;
+}
+
+.user-list{
+    overflow-x: auto;
+    max-height: 75vh;
+    width: 100%;
 }

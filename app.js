@@ -52,20 +52,30 @@ app.get("/room", (req, res) => {
 io.on('connection', function (socket) {
     console.log("User connected");
 
+    // Register User on socket
     socket.on('register', function (data) {
         socket.user = data.username;
         socket.room = data.room;
+        io.emit(`users-${socket.room}`, {
+            users: userRepo.getUsers(socket.room)
+        });
     })
 
+    // get and send message
     socket.on('msg', function (msg) {
+        console.log(msg);
         io.emit(`msg-${msg.room}`, {
             user: msg.username,
             msg: msg.msg
         });
     });
 
+    // unregister user
     socket.on('disconnect', function () {
         userRepo.deleteUser(socket.user, socket.room);
+        io.emit(`users-${socket.room}`, {
+            users: userRepo.getUsers(socket.room)
+        });
     })
 })
 

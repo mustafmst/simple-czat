@@ -1,20 +1,29 @@
 <div class="chat">
     <div id="user-data" class="container">
         <div class="row">
-            <div class="col-1">Name: </div>
-            <div class="col" id="name">{{userData.name}}</div> ||
-            <div class="col-1">Room: </div>
-            <div class="col" id="room">{{userData.room}}</div>
+            <h3>
+                Room:
+                <span id="room">{{userData.room}}</span>
+            </h3>
         </div>
     </div>
     <div class="messages container" id="list">
-        <div id="inner"></div>
+        <div class="row">
+            <div class="col-2 user-list">
+                <div class="list">
+                    <ul id="room-users">
+                        <li class="active-user">{{userData.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="inner" class="col"></div>
+        </div>
     </div>
     <div class="input">
         <div class="container">
             <form action="" id="msg-form">
                 <div class="input-group row">
-                    <input id="new-msg" type="text" class="form-control col" autocomplete="off" >
+                    <input id="new-msg" type="text" class="form-control col" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-dark">Send</button>
                     </div>
@@ -22,4 +31,5 @@
             </form>
         </div>
     </div>
+    <script src="front.js"></script>
 </div>
