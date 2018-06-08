@@ -25,6 +25,16 @@ function printMessage(user, msg, mine) {
     list.append(`<div class="${className} row"><div class="card col"><div class="card-body"><div class="card-title"><b>${user}</b></div class="content">${val}</div></div></div>`);
 }
 
+function updateUsersList(list, activeUser) {
+    var ul = $("#room-users");
+    ul.empty();
+    list.forEach(user => {
+        var className = "room-user";
+        if(user === activeUser) className = "active-room-user";
+        ul.append(`<li class="${className}">${user}</li>`);
+    });
+}
+
 $(
     function () {
         var socket = io();
@@ -56,7 +66,7 @@ $(
 
         // Update Users
         socket.on(`users-${room}`, function (msg) {
-            console.log(msg); 
+            updateUsersList(msg.users, username);
         });
     }
 );

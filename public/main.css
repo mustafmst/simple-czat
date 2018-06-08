@@ -25,3 +25,11 @@
     max-height: 75vh;
     width: 100%;
 }
+
+.room-user{
+    color: rgb(0, 0, 0)
+}
+
+.active-room-user{
+    color: rgb(98, 0, 143)
+}
