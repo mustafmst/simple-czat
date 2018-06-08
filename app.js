@@ -50,8 +50,6 @@ app.get("/room", (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    console.log("User connected");
-
     // Register User on socket
     socket.on('register', function (data) {
         socket.user = data.username;
@@ -63,7 +61,6 @@ io.on('connection', function (socket) {
 
     // get and send message
     socket.on('msg', function (msg) {
-        console.log(msg);
         io.emit(`msg-${msg.room}`, {
             user: msg.username,
             msg: msg.msg
